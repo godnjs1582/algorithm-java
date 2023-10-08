@@ -5,13 +5,16 @@ class Solution {
         int[] answer = new int[queries.length];
         
         for (int i = 0; i < queries.length; i++) {
-            int min = 217800000; // 각 쿼리마다 min 초기화
-            for (int j = queries[i][0]; j <= queries[i][1]; j++) {
-                if (arr[j] > queries[i][2] && arr[j] < min) {
+            int min = Integer.MAX_VALUE; 
+            int s = queries[i][0]; 
+            int e = queries[i][1];
+            int k = queries[i][2];
+            for (int j = s; j <= e ;j++) {
+                if (arr[j] > k && arr[j] < min) {
                     min = arr[j];
                 }
             }
-            if (min == 217800000) {
+            if (min == Integer.MAX_VALUE) {
                 answer[i] = -1;
             } else {
                 answer[i] = min;
